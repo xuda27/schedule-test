@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shandiangou.scheduletest.quartz.dao.JobAndTriggerMapper">
+
+	<resultMap id="BaseResultMap" type="com.shandiangou.scheduletest.quartz.domain.JobAndTrigger">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="JOB_NAME" property="jobName" />
+		<result column="JOB_GROUP" property="jobGroup" />
+		<result column="JOB_CLASS_NAME" property="jobClassName" />
+		<result column="TRIGGER_NAME" property="triggerName" />
+		<result column="TRIGGER_GROUP" property="triggerGroup"  />
+		<result column="CRON_EXPRESSION" property="cronExpression"  />
+		<result column="TIME_ZONE_ID" property="timeZoneId" />
+	</resultMap>
+
+    <select id="getJobAndTriggerDetails" resultMap="BaseResultMap">
+			SELECT
+				qrtz_job_details.JOB_NAME,
+				qrtz_job_details.JOB_GROUP,
+				qrtz_job_details.JOB_CLASS_NAME,
+				qrtz_triggers.TRIGGER_NAME,
+				qrtz_triggers.TRIGGER_GROUP,
+				qrtz_cron_triggers.CRON_EXPRESSION,
+				qrtz_cron_triggers.TIME_ZONE_ID
+			FROM
+				qrtz_job_details
+			JOIN qrtz_triggers
+			JOIN qrtz_cron_triggers ON qrtz_job_details.JOB_NAME = qrtz_triggers.JOB_NAME
+			AND qrtz_triggers.TRIGGER_NAME = qrtz_cron_triggers.TRIGGER_NAME
+			AND qrtz_triggers.TRIGGER_GROUP = qrtz_cron_triggers.TRIGGER_GROUP
+    </select>
+
+</mapper>
