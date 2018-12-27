@@ -1,9 +1,9 @@
 package com.shandiangou.scheduletest.quartz.test.job;
 
-import org.quartz.Job;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
+import org.quartz.*;
 
+@DisallowConcurrentExecution
+@PersistJobDataAfterExecution
 public class HelloJob implements Job {
     public HelloJob() {
     }
