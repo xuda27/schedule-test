@@ -14,7 +14,7 @@ import java.util.Properties;
 @Configuration
 public class SchedulerConfig {
 
-    @Bean(name="SchedulerFactory")
+    @Bean(name="schedulerFactory")
     public SchedulerFactoryBean schedulerFactoryBean() throws IOException {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();
         factory.setQuartzProperties(quartzProperties());
@@ -45,7 +45,7 @@ public class SchedulerConfig {
      * @return
      * @throws IOException
      */
-    @Bean(name="Scheduler")
+    @Bean(name="scheduler")
     public Scheduler scheduler() throws IOException {
         return schedulerFactoryBean().getScheduler();
     }

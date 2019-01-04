@@ -1,10 +1,22 @@
 # schedule-test
-## timer
+## Timer
+1. 线程安全
+2. 依赖TimerTask（非实现Runable接口）
+3. 每个Timer对象相对应的是单个后台线程 / 单线程 / 阻塞
+4. 没有时间单位 不支持corn表达式
+## ScheduledExecuotorService
+1. Runnable / Callable
+2. 有时间单位
+3. 只支持相对时间和周期作为参数
+4. 不支持corn表达式
+5. 线程池操作
 
-## scheduledExecuotorService
-## springSchedule
+## SpringSchedule
+1. 支持corn表达式
+2. spring支持 配置化
+3. 应用级 非分布式
 
-## quartz学习
+## quartz
 
 ### 关键字
 - scheduler 任务调用者 ：管理任务、触发器
@@ -215,4 +227,5 @@ commit;
 ```
 
 ## elastic-job-lite
+依赖于Zookeeper
 https://github.com/elasticjob/elastic-job-lite

@@ -20,7 +20,7 @@ public class JobController {
     private IJobAndTriggerService iJobAndTriggerService;
 
     @Autowired
-    @Qualifier("Scheduler")
+    @Qualifier("scheduler")
     private Scheduler scheduler;
 
     private static Logger log = LoggerFactory.getLogger(JobController.class);
