@@ -12,6 +12,7 @@ public class QuartzTest {
     public static void main(String[] args) throws SchedulerException {
         // Grab the Scheduler instance from the Factory 创建scheduler
         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+        scheduler.clear();
 
         // and start it off 启动
         scheduler.start();
@@ -26,7 +27,7 @@ public class QuartzTest {
                 .withIdentity("trigger1", "group1")
                 .startNow()
                 .withSchedule(simpleSchedule()
-                        .withIntervalInSeconds(40)
+                        .withIntervalInSeconds(4)
                         .repeatForever())
                 .build();
 
